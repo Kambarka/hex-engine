@@ -17,6 +17,9 @@
 mono_crash.*
 
 # Build results
+out/
+bin/
+build/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -396,3 +399,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/CMakeSettings.json
