@@ -33,39 +33,22 @@
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// HEADER
+// hex::core::Game
 #ifndef HEX_ENGINE_CORE_GAME_HPP
-  #include "Game.hpp"
+  #include <hex/core/game/Game.hpp>
 #endif // !HEX_ENGINE_CORE_GAME_HPP
+
+// Include gtest
+#include <gtest/gtest.h>
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Game
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-namespace hex::core
-{
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // CONSTRUCTOR & DESTRUCTOR
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  Game::Game() noexcept = default;
-
-  Game::~Game() noexcept = default;
-
-  bool Game::Initialize() noexcept
-  {
-    return true;
-  }
-
-  void Game::Terminate() noexcept
-  {
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-} // hex
+TEST(GameInitTest, GameTest) {
+  const bool isInitialized = hex::core::Game::Initialize();
+  EXPECT_TRUE(isInitialized);
+  hex::core::Game::Terminate();
+}
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

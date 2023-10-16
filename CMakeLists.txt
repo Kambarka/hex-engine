@@ -32,6 +32,7 @@ set(HEX_ENGINE_SOURCES
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # hexEngine.Core
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/core")
 
 # hexEngine.{PLATFORM}
 
@@ -51,5 +52,17 @@ target_link_libraries(hex
   hex_core
 )
 target_include_directories(hex PRIVATE "${HEX_ENIGNE_CORE_INCLUDE_DIR}")
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# TESTS
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+if (NOT DEFINED HEX_ENGINE_TESTS_ENABLED)
+  message(STATUS "${PROJECT_NAME} - tests enabled. Set <HEX_ENGINE_TESTS_ENABLED> to disable them")
+  set(HEX_ENGINE_TESTS_ENABLED ON)
+  enable_testing()
+  include("${CMAKE_CURRENT_LIST_DIR}/cmake/tests.cmake")
+  add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/tests")
+endif (NOT DEFINED HEX_ENGINE_TESTS_ENABLED)
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
